@@ -53,4 +53,5 @@ make up-localstack
 docker volume create tfcoding_code_dir_tmp 2>/dev/null || true
 source scripts/wait_for_endpoints.sh "http://localhost:4566/health"
 should pass "Examples - Basic" "tfcoding -r examples/basic --mock_aws"
+should pass "Examples - Complete" "tfcoding -r examples/complete --mock_aws"
 should fail "Directory SRC_RELATIVE_DIR_PATH does not exist" "tfcoding -r examples/unknown --mock_aws"
