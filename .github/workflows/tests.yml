@@ -12,9 +12,9 @@ jobs:
     strategy:
       matrix:
         include:
-          # 0.12.30-latest
-          - TERRAFORM_VERSION: "0.12.30"
-            TFCODING_DOCKER_TAG: "unfor19/tfcoding:0.12.30-latest"
+          # 0.12.31-latest
+          - TERRAFORM_VERSION: "0.12.31"
+            TFCODING_DOCKER_TAG: "unfor19/tfcoding:0.12.31-latest"
           # 0.13.6-latest
           - TERRAFORM_VERSION: "0.13.6"
             TFCODING_DOCKER_TAG: "unfor19/tfcoding:0.13.6-latest"
