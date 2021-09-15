@@ -32,5 +32,4 @@ jobs:
       - name: Tests Terraform Version - ${{ matrix.TERRAFORM_VERSION }}
         env:
           TFCODING_DOCKER_TAG: ${{ matrix.TFCODING_DOCKER_TAG }}
-        run: |
-          ./scripts/tests.sh
+        run: make test
