@@ -7,8 +7,8 @@ variable "overwrite" {
 }
 
 variable "prefix" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Set a prefix to all variables, for example: /myapp/dev/"
 }
 
