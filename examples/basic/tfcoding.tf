@@ -4,6 +4,8 @@ module "app_params" {
   # source  = "unfor19/ssm-parameters/aws"
   # version = "0.0.1"
 
+  prefix = "/myapp/dev/"
+
   string_parameters = [
     "LOG_LEVEL",
   ]
@@ -15,6 +17,10 @@ module "app_params" {
 
 
 locals {
-  num_of_string       = module.app_params.num_of_string
-  num_of_securestring = module.app_params.num_of_securestring
+  string_arns = module.app_params.string_arns
+  string_names = module.app_params.string_names
+  securestring_arns = module.app_params.securestring_arns
+  securestring_names = module.app_params.securestring_names
+  stringlist_arns = module.app_params.stringlist_arns
+  stringlist_names = module.app_params.stringlist_names  
 }

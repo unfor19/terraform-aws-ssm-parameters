@@ -12,6 +12,9 @@ This module is available at [Terraform Registery](https://registry.terraform.io/
 module "app_params" {
     source  = "unfor19/ssm-parameters/aws"
     version = "0.0.1"
+
+    prefix = "/myapp/dev/"
+
     string_parameters = [
         "LOG_LEVEL",
     ]
@@ -58,9 +61,12 @@ module "app_params" {
 
 | Name | Description |
 |------|-------------|
-| num_of_securestring | Number of SecureString(s) |
-| num_of_string | Number of String(s) |
-| num_of_stringlist | Number of StringList(s) |
+| securestring_arns | List of SecureString ARNs |
+| securestring_names | List of SecureString names |
+| string_arns | List of String ARNs |
+| string_names | List of String names |
+| stringlist_arns | List of StringList ARNs |
+| stringlist_names | List of StringList names |
 
 <!-- terraform_docs_end -->
 
