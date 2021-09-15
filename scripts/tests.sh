@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-_DOCKERHUB_TAG="${DOCKERHUB_TAG:-"unfor19/tfcoding:0.14.8-latest"}"
+_TFCODING_DOCKER_TAG="${_TFCODING_DOCKER_TAG:-"unfor19/tfcoding:0.14.8-latest"}"
 
 
 error_msg(){
@@ -36,7 +36,7 @@ should(){
 
 tfcoding(){
     docker run -t --rm --network "tfcoding_aws_shared" -v "${PWD}"/:/src/:ro \
-        "${_DOCKERHUB_TAG}" "$@"
+        "${_TFCODING_DOCKER_TAG}" "$@"
 }
 
 
