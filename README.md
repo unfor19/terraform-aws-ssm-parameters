@@ -1,1 +1,105 @@
 # terraform-aws-ssm-parameters
+
+Work-In-Progress **WIP**
+
+Create AWS SSM Parameter Store parameters with a Terraform module. The creation/deletion (schema) is managed with Terraform, and the values should be maintained via AWS Console.
+
+## Usage
+
+```ruby
+module "app_params" {
+    source = "github.com/unfor19/terraform-aws-ssm-parameters"
+    string_parameters = [
+        "LOG_LEVEL",
+    ]
+    securestring_parameters = [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+    ]
+}
+```
+
+<!-- terraform_docs_start -->
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.31 |
+| aws | >= 3.38 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 3.38 |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| key_id | When using SecureString, use a specific KMS key, defaults to - alias/aws/ssm | `string` | `"alias/aws/ssm"` | no |
+| overwrite | *DANGEROUS* Overwrites parameter if exists | `bool` | `false` | no |
+| prefix | Set a prefix to all variables, for example: /myapp/dev/ | `string` | `""` | no |
+| securestring_initial_value | Initial value for SecureString(s) | `string` | `"empty"` | no |
+| securestring_parameters | List of SecureString(s) | `list(string)` | `[]` | no |
+| securestring_tier | Valid values: Standard, Advanced and Intelligent-Tiering | `string` | `"Standard"` | no |
+| string_initial_value | Initial value for String(s) | `string` | `"empty"` | no |
+| string_parameters | List of String(s) | `list(string)` | `[]` | no |
+| string_tier | Valid values: Standard, Advanced and Intelligent-Tiering | `string` | `"Standard"` | no |
+| stringlist_initial_value | Initial value for StringList(s) | `string` | `"empty"` | no |
+| stringlist_parameters | List of StringList(s) (comma-separated) | `list(string)` | `[]` | no |
+| stringlist_tier | Valid values: Standard, Advanced and Intelligent-Tiering | `string` | `"Standard"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| num_of_securestring | Number of SecureString(s) |
+| num_of_string | Number of String(s) |
+| num_of_stringlist | Number of StringList(s) |
+
+<!-- terraform_docs_end -->
+
+## Local Development
+
+Using the following services
+
+- [localstack](https://github.com/localstack/localstack) - A fully functional local cloud (AWS) stack
+- [unfor19/tfcoding](https://github.com/unfor19/tfcoding) - Triggers a whole terraform pipeline of `terraform init` and `terraform fmt` and `terraform apply` upon changing the file [examples/basic/tfcoding.tf](./examples/basic/tfcoding.tf)
+
+### Requirements
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Development Process
+
+1. Run `tfcoding` and `localstack` locally with `docker-compose`
+    ```bash
+    make up-localstack-aws
+    ```
+1. Make changes in [examples/basic/tfcoding.tf](./examples/basic/tfcoding.tf) and save the file
+2. Check the logs of the `tfcoding` Docker container
+
+### Test Suite
+
+1. Execute the script [scripts/tests.sh](./scripts/tests.sh)
+   ```bash
+   ./scripts/tests.sh
+1. Examine the output - `\e[92m]...\e[0m]` is colorizing the text in CI/CD services logs such as [GitHub Actions](https://github.com/features/actions)
+   ```
+   Outputs:
+
+   num_of_securestring = 2
+   num_of_string = 1
+   \e[92m[SUCCESS]\e[0m Test passed as expected
+   ```
+
+## Authors
+
+Created and maintained by [Meir Gabay](https://github.com/unfor19)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/unfor19/terraform-aws-ssm-parameters/blob/master/LICENSE) file for details
