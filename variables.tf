@@ -54,7 +54,7 @@ variable "securestring_parameters" {
 variable "stringlist_parameters" {
   type        = list(string)
   default     = []
-  description = "List of StringList(s) **comma-separated**"
+  description = "List of StringList(s)"
 }
 
 # Initial Value

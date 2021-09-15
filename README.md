@@ -52,7 +52,7 @@ module "app_params" {
 | string_parameters | List of String(s) | `list(string)` | `[]` | no |
 | string_tier | Valid values: `Standard`, `Advanced` and `Intelligent-Tiering` | `string` | `"Standard"` | no |
 | stringlist_initial_value | Initial value for StringList(s) | `string` | `"empty"` | no |
-| stringlist_parameters | List of StringList(s) **comma-separated** | `list(string)` | `[]` | no |
+| stringlist_parameters | List of StringList(s) | `list(string)` | `[]` | no |
 | stringlist_tier | Valid values: `Standard`, `Advanced` and `Intelligent-Tiering` | `string` | `"Standard"` | no |
 
 ## Outputs
