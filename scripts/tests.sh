@@ -35,8 +35,16 @@ should(){
 
 
 tfcoding(){
-    docker run -t --rm --network "tfcoding_aws_shared" -v "${PWD}"/:/src/:ro \
-        "${_TFCODING_DOCKER_TAG}" "$@"
+    local container_id
+    rm .cidtests 2>/dev/null || true
+    set +e
+    docker run --cidfile .cidtests -t --network "tfcoding_aws_shared" -v "${PWD}"/:/src/:ro \
+        "${_TFCODING_DOCKER_TAG}" "$@" > /dev/null
+    set -e
+    container_id="$(cat .cidtests)"
+    docker logs "$container_id"
+    docker rm "$container_id"
+    rm .cidtests 2>/dev/null || true
 }
 
 
@@ -44,3 +52,4 @@ tfcoding(){
 make up-localstack
 source scripts/wait_for_endpoints.sh "http://localhost:4566/health"
 should pass "Examples - Basic" "tfcoding -r examples/basic --mock_aws"
+should fail "Unknown SRC_RELATIVE_DIR_PATH" "tfcoding -r examples/unknown --mock_aws"
