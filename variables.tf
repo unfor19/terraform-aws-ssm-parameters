@@ -3,7 +3,7 @@
 variable "overwrite" {
   type        = bool
   default     = false
-  description = "*DANGEROUS* Overwrites parameter if exists"
+  description = "**DANGEROUS** Overwrites parameter if exists, use carefully"
 }
 
 variable "prefix" {

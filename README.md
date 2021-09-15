@@ -39,7 +39,7 @@ module "app_params" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | key_id | When using SecureString, use a specific KMS key, defaults to - alias/aws/ssm | `string` | `"alias/aws/ssm"` | no |
-| overwrite | *DANGEROUS* Overwrites parameter if exists | `bool` | `false` | no |
+| overwrite | **DANGEROUS** Overwrites parameter if exists, use carefully | `bool` | `false` | no |
 | prefix | Set a prefix to all variables, for example: /myapp/dev/ | `string` | `""` | no |
 | securestring_initial_value | Initial value for SecureString(s) | `string` | `"empty"` | no |
 | securestring_parameters | List of SecureString(s) | `list(string)` | `[]` | no |
