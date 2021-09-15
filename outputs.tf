@@ -1,4 +1,6 @@
 
+# reference for_each - https://www.terraform.io/docs/language/expressions/references.html#references-to-resource-attributes
+
 output "string_arns" {
   value       = [for value in aws_ssm_parameter.string_parameters: value.arn]
   description = "List of String ARNs"
