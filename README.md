@@ -11,7 +11,7 @@ This module is available at [Terraform Registry](https://registry.terraform.io/m
 ```ruby
 module "app_params" {
     source  = "unfor19/ssm-parameters/aws"
-    version = "0.0.1"
+    version = "0.0.2"
 
     prefix = "/myapp/dev/"
 
