@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-_TFCODING_DOCKER_TAG="${_TFCODING_DOCKER_TAG:-"unfor19/tfcoding:0.14.8-latest"}"
+_TFCODING_DOCKER_TAG="${TFCODING_DOCKER_TAG:-"unfor19/tfcoding:0.14.8-latest"}"
 
 
 error_msg(){
