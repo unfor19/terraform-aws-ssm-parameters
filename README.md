@@ -1,6 +1,6 @@
 # terraform-aws-ssm-parameters
 
-[![Tests](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml/badge.svg)](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml)
+[![Tests](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml/badge.svg)](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml) [![Terraform-Registry](https://img.shields.io/github/v/release/unfor19/terraform-aws-ssm-parameters?color=purple&label=terraform-registry&logo=terraform)](https://registry.terraform.io/modules/unfor19/ssm-parameters/aws/latest)
 
 Create AWS SSM Parameter Store parameters with a Terraform module. The creation/deletion (schema) is managed with Terraform, and the values should be maintained via AWS Console.
 
@@ -93,18 +93,40 @@ Using the following services
 
 ### Test Suite
 
-1. Execute the script [scripts/tests.sh](./scripts/tests.sh)
-   ```bash
-   ./scripts/tests.sh
-   ```
-1. Examine the output - `\e[92m]...\e[0m]` is colorizing the text in CI/CD services logs such as [GitHub Actions](https://github.com/features/actions)
-   ```
-   Outputs:
+Execute the script [scripts/tests.sh](./scripts/tests.sh)
 
-   num_of_securestring = 2
-   num_of_string = 1
-   \e[92m[SUCCESS]\e[0m Test passed as expected
-   ```
+```bash
+./scripts/tests.sh
+```
+
+Examine the output
+
+```bash
+... # omitted for brevity
+Outputs:
+
+securestring_arns = [
+  "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/GOOGLE_CLIENT_ID",
+  "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/GOOGLE_CLIENT_SECRET",
+]
+securestring_names = [
+  "/myapp/dev/GOOGLE_CLIENT_ID",
+  "/myapp/dev/GOOGLE_CLIENT_SECRET",
+]
+string_arns = [
+  "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/LOG_LEVEL",
+]
+string_names = [
+  "/myapp/dev/LOG_LEVEL",
+]
+stringlist_arns = []
+stringlist_names = []
+820dd4ab3376a318fad16692ec8f0c89171cafd4dae96ccf8489c9b80f38801c
+
+\e[92m[SUCCESS]\e[0m Test passed as expected
+```
+
+**NOTE**: `\e[92m]...\e[0m]` is colorizing the text in CI/CD services logs such as [GitHub Actions](https://github.com/features/actions)
 
 ## Authors
 
