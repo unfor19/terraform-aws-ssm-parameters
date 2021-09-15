@@ -84,12 +84,37 @@ Using the following services
 
 ### Development Process
 
-1. Run `tfcoding` and `localstack` locally with `docker-compose`
-    ```bash
-    make up-localstack-aws
-    ```
-1. Make changes in [examples/basic/tfcoding.tf](./examples/basic/tfcoding.tf) and save the file
-2. Check the logs of the `tfcoding` Docker container
+Run `tfcoding` and `localstack` locally with `docker-compose`
+
+```bash
+make up-localstack-aws
+```
+
+Make changes in [examples/basic/tfcoding.tf](./examples/basic/tfcoding.tf) and save the file
+
+Check the logs of the `tfcoding` Docker container
+
+```bash
+# ... omitted for brevity
+tfcoding-aws    | Outputs:
+tfcoding-aws    | 
+tfcoding-aws    | securestring_arns = [
+tfcoding-aws    |   "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/GOOGLE_CLIENT_ID",
+tfcoding-aws    |   "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/GOOGLE_CLIENT_SECRET",
+tfcoding-aws    | ]
+tfcoding-aws    | securestring_names = [
+tfcoding-aws    |   "/myapp/dev/GOOGLE_CLIENT_ID",
+tfcoding-aws    |   "/myapp/dev/GOOGLE_CLIENT_SECRET",
+tfcoding-aws    | ]
+tfcoding-aws    | string_arns = [
+tfcoding-aws    |   "arn:aws:ssm:us-east-1:000000000000:parameter/myapp/dev/LOG_LEVEL",
+tfcoding-aws    | ]
+tfcoding-aws    | string_names = [
+tfcoding-aws    |   "/myapp/dev/LOG_LEVEL",
+tfcoding-aws    | ]
+tfcoding-aws    | stringlist_arns = []
+tfcoding-aws    | stringlist_names = []
+```
 
 ### Test Suite
 
