@@ -9,33 +9,33 @@ variable "overwrite" {
 variable "prefix" {
   type        = string
   default     = ""
-  description = "Set a prefix to all variables, for example: /myapp/dev/"
+  description = "Set a prefix to all variables, for example: `/myapp/dev/`"
 }
 
 # SecureString Config
 variable "key_id" {
   type        = string
   default     = "alias/aws/ssm"
-  description = "When using SecureString, use a specific KMS key, defaults to - alias/aws/ssm"
+  description = "When using SecureString, use a specific KMS key"
 }
 
 # Tiers
 variable "string_tier" {
   type        = string
   default     = "Standard"
-  description = "Valid values: Standard, Advanced and Intelligent-Tiering"
+  description = "Valid values: `Standard`, `Advanced` and `Intelligent-Tiering`"
 }
 
 variable "securestring_tier" {
   type        = string
   default     = "Standard"
-  description = "Valid values: Standard, Advanced and Intelligent-Tiering"
+  description = "Valid values: `Standard`, `Advanced` and `Intelligent-Tiering`"
 }
 
 variable "stringlist_tier" {
   type        = string
   default     = "Standard"
-  description = "Valid values: Standard, Advanced and Intelligent-Tiering"
+  description = "Valid values: `Standard`, `Advanced` and `Intelligent-Tiering`"
 }
 
 # Parameters
@@ -54,7 +54,7 @@ variable "securestring_parameters" {
 variable "stringlist_parameters" {
   type        = list(string)
   default     = []
-  description = "List of StringList(s) (comma-separated)"
+  description = "List of StringList(s) **comma-separated**"
 }
 
 # Initial Value
