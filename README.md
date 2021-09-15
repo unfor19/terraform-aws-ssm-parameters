@@ -96,6 +96,7 @@ Using the following services
 1. Execute the script [scripts/tests.sh](./scripts/tests.sh)
    ```bash
    ./scripts/tests.sh
+   ```
 1. Examine the output - `\e[92m]...\e[0m]` is colorizing the text in CI/CD services logs such as [GitHub Actions](https://github.com/features/actions)
    ```
    Outputs:
