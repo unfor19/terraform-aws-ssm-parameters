@@ -153,6 +153,14 @@ stringlist_names = []
 
 **NOTE**: `\e[92m]...\e[0m]` is colorizing the text in CI/CD services logs such as [GitHub Actions](https://github.com/features/actions)
 
+## Troubleshooting
+
+- **ParameterAlreadyExists** - to overcome this error, you'll have to pass the `overwrite = true` variable. This also means that the current values will be overwritten with the dummy initial value `empty`. This is very dangerous and should be used with cautious.
+
+  ```
+  Error: error updating SSM parameter (/myapp/dev/GOOGLE_CLIENT_ID): ParameterAlreadyExists: Parameter /myapp/dev/GOOGLE_CLIENT_ID already exists.
+  ```
+
 ## Authors
 
 Created and maintained by [Meir Gabay](https://github.com/unfor19)
