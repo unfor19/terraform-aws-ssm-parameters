@@ -43,7 +43,7 @@ tfcoding(){
     set -e
     container_id="$(cat .cidtests)"
     docker logs "$container_id"
-    docker rm "$container_id"
+    docker rm "$container_id" 1>/dev/null
     rm .cidtests 2>/dev/null || true
 }
 

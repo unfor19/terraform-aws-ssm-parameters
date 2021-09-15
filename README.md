@@ -144,7 +144,6 @@ string_names = [
 ]
 stringlist_arns = []
 stringlist_names = []
-820dd4ab3376a318fad16692ec8f0c89171cafd4dae96ccf8489c9b80f38801c
 
 \e[92m[SUCCESS]\e[0m Test passed as expected
 ```
