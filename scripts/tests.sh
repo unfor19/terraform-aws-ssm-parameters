@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-_TFCODING_DOCKER_TAG="${TFCODING_DOCKER_TAG:-"unfor19/tfcoding:0.14.8-latest"}"
+_TFCODING_DOCKER_TAG="${TFCODING_DOCKER_TAG:-"unfor19/tfcoding:0.15.0-beta2-latest"}"
 
 
 error_msg(){
@@ -38,7 +38,7 @@ tfcoding(){
     local container_id
     rm .cidtests 2>/dev/null || true
     set +e
-    docker run --cidfile .cidtests -t --network "tfcoding_aws_shared" -v "${PWD}"/:/src/:ro \
+    docker run --cidfile .cidtests -t --network "tfcoding_aws_shared" -v tfcoding_code_dir_tmp:/tmp/ -v "${PWD}"/:/src/:ro \
         "${_TFCODING_DOCKER_TAG}" "$@" > /dev/null
     set -e
     container_id="$(cat .cidtests)"
@@ -50,6 +50,7 @@ tfcoding(){
 
 # Tests
 make up-localstack
+docker volume create tfcoding_code_dir_tmp 2>/dev/null || true
 source scripts/wait_for_endpoints.sh "http://localhost:4566/health"
 should pass "Examples - Basic" "tfcoding -r examples/basic --mock_aws"
-should fail "Unknown SRC_RELATIVE_DIR_PATH" "tfcoding -r examples/unknown --mock_aws"
+should fail "Directory SRC_RELATIVE_DIR_PATH does not exist" "tfcoding -r examples/unknown --mock_aws"
