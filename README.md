@@ -4,11 +4,14 @@ Work-In-Progress **WIP**
 
 Create AWS SSM Parameter Store parameters with a Terraform module. The creation/deletion (schema) is managed with Terraform, and the values should be maintained via AWS Console.
 
+This module is available at [Terraform Registery](https://registry.terraform.io/modules/unfor19/ssm-parameters/aws/latest)
+
 ## Usage
 
 ```ruby
 module "app_params" {
-    source = "github.com/unfor19/terraform-aws-ssm-parameters"
+    source  = "unfor19/ssm-parameters/aws"
+    version = "0.0.1"
     string_parameters = [
         "LOG_LEVEL",
     ]

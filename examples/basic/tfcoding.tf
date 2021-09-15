@@ -1,7 +1,8 @@
 
 module "app_params" {
   source = "../../../src" # For local development
-  # source = "github.com/unfor19/terraform-aws-ssm-parameters"
+  # source  = "unfor19/ssm-parameters/aws"
+  # version = "0.0.1"
 
   string_parameters = [
     "LOG_LEVEL",
