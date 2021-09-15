@@ -1,0 +1,25 @@
+version: "3.7"
+
+networks:
+  shared:
+
+volumes:
+  code_dir_tmp_aws:
+
+services:
+  tfcoding-aws:
+    container_name: tfcoding-aws
+    image: ${DOCKER_TAG:-unfor19/tfcoding:0.14.8-latest}
+    volumes:
+      - ./:/src/:ro
+      - code_dir_tmp_aws:/tmp/
+
+    command:
+      - "--src_dir_relative_path"
+      - "${SRC_DIR_RELATIVE_PATH:-examples/basic}"
+      - "--watching"
+      - "--mock_aws"
+    restart: always
+    tty: true # colorful output
+    networks:
+      - shared
