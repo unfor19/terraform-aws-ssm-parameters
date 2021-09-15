@@ -1,6 +1,6 @@
 # terraform-aws-ssm-parameters
 
-Work-In-Progress **WIP**
+[![Tests](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml/badge.svg)](https://github.com/unfor19/terraform-aws-ssm-parameters/actions/workflows/tests.yml)
 
 Create AWS SSM Parameter Store parameters with a Terraform module. The creation/deletion (schema) is managed with Terraform, and the values should be maintained via AWS Console.
 
